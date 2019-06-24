@@ -87,7 +87,7 @@ int songMatrix[][6][2] = {
   
 **SD TXT File Format**
 
-The song array is stored in a TXT file on the SD card in a very similar format (except the NOTE variables are stored as literal ints).  Here is what the above array would look like in TXT format:
+The song array is stored in a TXT file on the SD card in a very similar format (except the NOTE, REST, and SUSTAIN variables are stored as literal ints).  Here is what the above array would look like in TXT format:
 
 
 706,24,0,0,0,0,0,0,0,0,0,0,
