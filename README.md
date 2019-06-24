@@ -77,9 +77,9 @@ int songMatrix[][6][2] = {
   
   {{REST, 1},{REST, 1},{REST, 1},{REST, 1},{REST, 1},{0,22}},
   
-  {{NOTE_CS5, 1},{NOTE_G4, 1},{REST, 1},{REST, 1},{REST, 1},{0,23}},
+  {{NOTE_CS5, 2},{NOTE_G4, 2},{REST, 1},{REST, 1},{REST, 1},{0,23}},
   
-  {{NOTE_C5, 1},{NOTE_FS4, 1},{REST, 1},{REST, 1},{REST, 1},{0,24}}
+  {{SUSTAIN, NOTE_CS5},{SUSTAIN, NOTE_G4},{REST, 1},{REST, 1},{REST, 1},{0,24}}
   
   };
   
@@ -87,55 +87,56 @@ int songMatrix[][6][2] = {
   
 **SD TXT File Format**
 
-The song array is stored in a TXT file on the SD card in a very similar format.  Here is what the above array would look like in TXT format:
+The song array is stored in a TXT file on the SD card in a very similar format (except the NOTE variables are stored as literal ints).  Here is what the above array would look like in TXT format:
 
 
 706,24,0,0,0,0,0,0,0,0,0,0,
 
-NOTE_CS5,1,NOTE_G4,1,REST,1,REST,1,REST,1,0,1,
+554,1,392,1,0,1,0,1,0,1,0,1,
 
-NOTE_C5,1,NOTE_FS4,1,REST,1,REST,1,REST,1,0,2,
+523,1,370,1,0,1,0,1,0,1,0,2,
 
-NOTE_AS4,1,NOTE_E4,1,REST,1,REST,1,REST,1,0,3,
+466,1,330,1,0,1,0,1,0,1,0,3,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,4,
+0,1,0,1,0,1,0,1,0,1,0,4,
 
-NOTE_AS2,1,REST,1,REST,1,REST,1,REST,1,1,5,
+117,1,0,1,0,1,0,1,0,1,1,5,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,6,
+0,1,0,1,0,1,0,1,0,1,0,6,
 
-NOTE_AS2,1,REST,1,REST,1,REST,1,REST,1,1,7,
+117,1,0,1,0,1,0,1,0,1,1,7,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,8,
+0,1,0,1,0,1,0,1,0,1,0,8,
 
-NOTE_AS2,1,REST,1,REST,1,REST,1,REST,1,1,9,
+117,1,0,1,0,1,0,1,0,1,1,9,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,10,
+0,1,0,1,0,1,0,1,0,1,0,10,
 
-NOTE_AS2,1,REST,1,REST,1,REST,1,REST,1,1,11,
+117,1,0,1,0,1,0,1,0,1,1,11,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,12,
+0,1,0,1,0,1,0,1,0,1,0,12,
 
-NOTE_AS2,1,REST,1,REST,1,REST,1,REST,1,1,13,
+117,1,0,1,0,1,0,1,0,1,1,13,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,14,
+0,1,0,1,0,1,0,1,0,1,0,14,
 
-NOTE_AS2,1,REST,1,REST,1,REST,1,REST,1,1,15,
+117,1,0,1,0,1,0,1,0,1,1,15,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,16,
+0,1,0,1,0,1,0,1,0,1,0,16,
 
-NOTE_CS5,1,NOTE_G4,1,REST,1,REST,1,REST,1,1,17,
+554,1,392,1,0,1,0,1,0,1,1,17,
 
-NOTE_C5,1,NOTE_FS4,1,REST,1,REST,1,REST,1,1,18,
+523,1,370,1,0,1,0,1,0,1,1,18,
 
-NOTE_AS4,1,NOTE_E4,1,REST,1,REST,1,REST,1,1,19,
+466,1,330,1,0,1,0,1,0,1,1,19,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,20,
+0,1,0,1,0,1,0,1,0,1,0,20,
 
-NOTE_AS2,1,REST,1,REST,1,REST,1,REST,1,0,21,
+117,1,0,1,0,1,0,1,0,1,0,21,
 
-REST,1,REST,1,REST,1,REST,1,REST,1,0,22,
+0,1,0,1,0,1,0,1,0,1,0,22,
 
-NOTE_CS5,1,NOTE_G4,1,REST,1,REST,1,REST,1,0,23,
+554,2,392,2,0,1,0,1,0,1,0,23,
 
-NOTE_C5,1,NOTE_FS4,1,REST,1,REST,1,REST,1,0,24
+1,554,1,392,0,1,0,1,0,1,0,24
+
