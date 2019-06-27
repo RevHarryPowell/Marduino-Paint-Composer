@@ -5,6 +5,7 @@
 *Minor aesthetic tweak to redrawMatrix()
 
 **COMPOSER ESSENTIALLY COMPLETE**
+  >only needs correct button pin definitions when additional buttons are added
 */
 
 #include "Adafruit_HT1632.h"
