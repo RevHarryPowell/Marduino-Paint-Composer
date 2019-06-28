@@ -28,9 +28,9 @@ Adafruit_7segment sseg1 = Adafruit_7segment();
 Adafruit_7segment sseg2 = Adafruit_7segment();
 Adafruit_7segment sseg3 = Adafruit_7segment();
 
+//SD constants
 #define CS_PIN 53
 #define CSV_DELIM ','
-
 File file;
 
 //define musical pins
@@ -246,16 +246,26 @@ void loop() {
       }
     }
     if (Bcount == 1){
-      Bcount = 14;
-      currentOctave++;
-      sseg2.writeDigitNum(0, (currentOctave + 1));
-      sseg2.writeDisplay();
+      if (currentOctave < 6){
+        Bcount = 14;
+        currentOctave++;
+        sseg2.writeDigitNum(0, (currentOctave + 1));
+        sseg2.writeDisplay();
+      }
+      else{
+        Bcount = 2;
+      }
     }
     if (Bcount == 15){
-      Bcount = 2;
-      currentOctave--;
-      sseg2.writeDigitNum(0, (currentOctave + 1));
-      sseg2.writeDisplay();
+      if (currentOctave > 0){
+        Bcount = 2;
+        currentOctave--;
+        sseg2.writeDigitNum(0, (currentOctave + 1));
+        sseg2.writeDisplay();
+      }
+      else{
+        Bcount = 14;
+      }
     }
   }
   bLast = bState;
@@ -600,8 +610,8 @@ void reloadBuffer(int beat){
         }
         file.print("\r\n");
       }
-    file.close();
-    file = SD.open(String(lastFile + 1) + ".TXT", FILE_WRITE);
+      file.close();
+      file = SD.open(String(lastFile + 1) + ".TXT", FILE_WRITE);
       if (!file) {
         Serial.println("open failed");
         return;
@@ -844,8 +854,9 @@ void redrawMatrix(int matrixx[12][6][2]){
 void startComposer(){
   //load the song and get metadata, determine number of files for splitting
   int tempBuffer[48][6][2];   // temp matrix to store 48 beats, save as "1.txt", "2.txt", etc. in /Temp
-  byte fileNum;               // number of temp files needed for the splitting process
+  byte fileCount;               // number of temp files needed for the splitting process
   byte remainder;
+  SD.chdir();
   //open file on SD
   file = SD.open(songFile);
   if (!file) {
@@ -886,10 +897,10 @@ void startComposer(){
     sseg3.writeDisplay();
     remainder = totalBeats % 48;
     if (remainder == 0){
-      fileNum = (totalBeats / 48);
+      fileCount = (totalBeats / 48);
     }
     else{
-      fileNum = ((totalBeats / 48) + 1);
+      fileCount = ((totalBeats / 48) + 1);
     }
     file.close();        
   }
@@ -901,9 +912,8 @@ void startComposer(){
   SD.chdir();
   SD.mkdir("Temp");          //create new /temp
 
-  
   //Load the song and split it up
-  for (int m = 1; m < fileNum + 1; m++){
+  for (int m = 1; m < fileCount + 1; m++){
     SD.chdir();
     //open file on SD
     file = SD.open(songFile);
@@ -964,7 +974,7 @@ void startComposer(){
       return;
     }
     //upload tempBuffer to split file
-    if (m != fileNum){
+    if (m != fileCount){
       for (byte x = 0; x < 48; x++){
         for (byte y = 0; y < 6; y++){
           if (y < 5){
@@ -982,7 +992,7 @@ void startComposer(){
         file.print("\r\n");
       }
     }
-    else if (m == fileNum){
+    else if (m == fileCount){
       for (byte x = 0; x < remainder; x++){
         for (byte y = 0; y < 6; y++){
           if (y < 5){
