@@ -100,7 +100,8 @@ void save(){
   }
   file.print("\r\n");
   file.close();
-   
+
+  //open temp files and append them to save file
   for (byte m = 1; m < (fileCount + 1); m++){
     SD.chdir("/Temp");
     // open temp file
