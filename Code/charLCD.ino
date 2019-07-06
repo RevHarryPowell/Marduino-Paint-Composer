@@ -1,3 +1,5 @@
+//UI on character LCD
+//Includes a main menu
 //Displays on LCD list of songs saved on SD
 //Scroll through songs using rotary encoder C
 
