@@ -1,16 +1,19 @@
 # Marduino-Paint-Composer
 A stripped-down Mario Paint Composer in a box using an Arduino Mega and a bunch of Adafruit Components
 
-CODE IS A WORK IN PROGRESS
+THIS IS A WORK IN PROGRESS
 
-Code currently broken up into multiple parts for testing/development purposes
+**MarduinoPaintComposer** is the compilation of the below sketches.  This will become the final sketch when development is finished.
 
+Sketches below broken up into multiple parts for testing/development purposes
 
 **SD2matrix** reads a TXT file from the SD card and compiles the contents into the proper array format
 
 **matrix2SD** writes array to TXT file on SD card
 
 **SDplayback** streams song from TXT file on SD cars (so as to avoid loading it all into RAM, avoiding song length constraints)
+
+**charLCD** is a rudimentary UI/menu system for the character LCD
 
 **Composer** displays song on LED matrix.  It allows scrolling through the song horizontally and vertically with 2 rotary encoders (etch-a-sketch style).  This is the most complex part of the code so far, so it's uploaded in versions.  Version changelogs are found at the top of each file.
 
